@@ -1,0 +1,39 @@
+body{
+    font-family: monospace;
+    background-color: gainsboro;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: darkorchid;
+    background-image: url(./images/download.png);
+    background-repeat: repeat;
+    background-attachment: scroll;
+    padding-left: 50px;
+}
+
+input{
+    width: 290px;
+    height: 40px;
+    border: 4px solid darkorchid;
+    margin-top: 20px;
+}
+
+.checkbox{
+    width: 60px;
+    height: 30px;
+    padding-left: 20px;
+}
+
+button{
+    padding: 14px 20px;
+    background-color: darkorchid;
+    color: white;
+    font-size: 15px;
+    border: 1px solid white;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.delete{
+    cursor: pointer;
+    font-size: 40px;
+    font-weight: bolder;
+}

@@ -1,0 +1,45 @@
+import { createSlice,PayloadAction} from '@reduxjs/toolkit' 
+import { ITodoItem } from '../../../types/todo'
+import { RootState } from '../../store'
+import { getTodos } from './todosAPI'
+
+
+type TodosType = ITodoItem[]
+const initialState:TodosType = []
+
+
+const todosSlice = createSlice({
+    name: 'todos',
+    initialState,
+    reducers:{
+        addItem(state,action:PayloadAction<string>){
+            state.unshift({
+                id:new Date().getTime().toString(),
+                body:action.payload,
+                completed:false
+            })
+        },
+        checkItem(state,action:PayloadAction<string>){
+            const idx = state.findIndex(todo => todo.id === action.payload)
+            state[idx].completed = !state[idx].completed
+        },
+        delItem(state,action:PayloadAction<string>){
+            const idx = state.findIndex(todo => todo.id === action.payload)
+
+            state.splice(idx,1)
+        }
+    },
+    extraReducers(builder){
+        builder.addCase(getTodos.fulfilled,(state,{payload}) => {
+            return payload
+        })
+    }
+})
+
+
+export const selectTodos = (state:RootState):TodosType => state.todos
+
+export const { addItem,checkItem,delItem } = todosSlice.actions
+
+export const todosReducer = todosSlice.reducer
+
